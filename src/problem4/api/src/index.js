@@ -15,16 +15,17 @@ const pool = new Pool({
 const redis = new Redis({ host: process.env.REDIS_HOST, port: 6379 });
 
 app.get("/api/users", async (req, res) => {
+  let db;
   try {
-    const db = await pool.connect();
+    db = await pool.connect();
     const result = await db.query("SELECT NOW()");
-    db.release();
-
     await redis.set("last_call", Date.now());
     res.json({ ok: true, time: result.rows[0] });
   } catch (err) {
     console.error(err);
     res.status(500).json({ ok: false, error: err.message });
+  } finally {
+    if (db) db.release();
   }
 });
 
