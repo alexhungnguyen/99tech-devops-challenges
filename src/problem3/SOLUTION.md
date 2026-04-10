@@ -13,7 +13,7 @@ df -h
 lsblk
 ```
 
-`df -h` shows filesystem-level usage (how full each mounted filesystem is), while `lsblk` shows the block device hierarchy (disks, partitions, and their sizes) — useful for identifying unpartitioned space or unmounted volumes.
+`df -h` shows filesystem-level usage (how full each mounted filesystem is), while `lsblk` shows the block device hierarchy (disks, partitions, and their sizes) - useful for identifying unpartitioned space or unmounted volumes.
 
 Example output
 ```bash
@@ -123,7 +123,7 @@ A full disk has a cascading failure profile that goes well beyond NGINX itself:
 | **cron / scheduled jobs** | Jobs that produce any output fail, potentially skipping backups or maintenance tasks |
 | **SSH** | New SSH sessions may be refused if PAM or the shell cannot write to disk, locking you out of the VM |
 
-The risk compounds quickly — a disk that is 99% full during off-hours can hit 100% quickly under normal traffic load, turning a warning into a full outage.
+The risk compounds quickly - a disk that is 99% full during off-hours can hit 100% quickly under normal traffic load, turning a warning into a full outage.
 
 ### Emergency recovery: disk is 100% full and SSH is unavailable
 
@@ -169,7 +169,7 @@ dpkg -l | grep logrotate
 logrotate --version
 ```
 
-- Setup logrotate properly: Ensure `/etc/logrotate.d/nginx` exists with sensible settings — daily rotation, compression, a retention window (e.g., 7–14 days), and the postrotate signal so NGINX reopens file handles. Create new one with a sample configuration below if not existed yet
+- Setup logrotate properly: Ensure `/etc/logrotate.d/nginx` exists with sensible settings - daily rotation, compression, a retention window (e.g., 7–14 days), and the postrotate signal so NGINX reopens file handles. Create new one with a sample configuration below if not existed yet
 ```
 # Rotate NGINX logs daily, keep 7 days
 /var/log/nginx/*.log {
