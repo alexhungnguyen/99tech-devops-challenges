@@ -28,8 +28,6 @@ The system is deployed within a single VPC, segmented into three subnet tiers ac
 
 ### Traffic Routing
 
-API and WebSocket traffic take separate paths to avoid unnecessary hops for real-time connections:
-
 | Traffic Type | Path |
 |-------------|------|
 | **Static assets** (JS, CSS, images) | CloudFront → S3 origin bucket |
